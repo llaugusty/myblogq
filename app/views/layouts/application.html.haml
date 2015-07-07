@@ -1,0 +1,28 @@
+!!! 5
+%html
+	%head
+		%title Pin
+		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+		= javascript_include_tag 'application', 'data-turbolinks-track' => true
+		= csrf_meta_tags
+	%body
+		- if user_signed_in?
+			%ol.breadcrumb
+				%li.active= ""
+				%li= link_to 'Profile', edit_user_registration_path, :class => 'navbar-link'
+				%li= link_to 'Log out', destroy_user_session_path, method: :delete, :class => 'navbar-link'
+				%li.active= current_user.email
+		- else
+			%ol.breadcrumb
+				%li.active= ""
+				%li= link_to 'Sign up', new_user_registration_path, :class => 'navbar-link'
+				%li= link_to 'Login', new_user_session_path, :path => 'navbar-link'
+
+
+		- if notice
+			%p.alert.alert-success= notice
+		- if alert
+			%p.alert.alert-danger= alert
+
+		.container
+			= yield
