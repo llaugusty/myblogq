@@ -1,12 +1,15 @@
-= image_tag @pinpost.image.url(:medium)
-%h1= @pinpost.title
-%p= @pinpost.content
-- if @pinpost.user
-	%p 
-		Posted by 
-		%span= @pinpost.user.email
+.col-md-9.col-md-offset-2
+	.pin-show
+		= image_tag @pinpost.image.url(:large)
+		.content
+			%h1= @pinpost.title
+			%p= @pinpost.content
+			- if @pinpost.user
+				%p 
+					Posted by 
+					%span= @pinpost.user.email
 
-= link_to "Back", root_path
-= link_to "Edit", edit_pin_post_path
-= link_to "Delete", pin_post_path, method: "DELETE", data: {confirm: "Are you sure?"}
-= link_to "Sign out", destroy_user_session_path, method: "DELETE", data: {confirm: "Are you sure?"}
+			= link_to "Back", root_path
+			= link_to "Edit", edit_pin_post_path
+			= link_to "Delete", pin_post_path, method: "DELETE", data: {confirm: "Are you sure?"}
+			= link_to "Sign out", destroy_user_session_path, method: "DELETE", data: {confirm: "Are you sure?"}
