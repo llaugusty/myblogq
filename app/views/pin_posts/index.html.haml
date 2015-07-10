@@ -1,6 +1,6 @@
 #pins.transitions-enabled
 	- @pinposts.each do |pinpost| 
-		.pin-post.box.panel.panel-default
-			= link_to image_tag(pinpost.image.url(:medium)), pinpost
+		.pin-post.box
+			= link_to image_tag(pinpost.image.url), pinpost
 			.panel-body
 				= link_to pinpost.title, pinpost, id: "title"
