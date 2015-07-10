@@ -11,6 +11,7 @@
 				%li.active= ""
 				%li= link_to 'Profile', edit_user_registration_path, :class => 'navbar-link'
 				%li= link_to 'Log out', destroy_user_session_path, method: :delete, :class => 'navbar-link'
+				%li= link_to "New Pin", new_pin_post_path, :class => 'navbar-link'
 				%li.active= current_user.email
 		- else
 			%ol.breadcrumb
@@ -18,11 +19,10 @@
 				%li= link_to 'Sign up', new_user_registration_path, :class => 'navbar-link'
 				%li= link_to 'Login', new_user_session_path, :path => 'navbar-link'
 
-
-		- if notice
-			%p.alert.alert-success= notice
-		- if alert
-			%p.alert.alert-danger= alert
-
 		.container
+			- if notice
+				%p.alert.alert-success= notice
+			- if alert
+				%p.alert.alert-danger= alert
+
 			= yield
