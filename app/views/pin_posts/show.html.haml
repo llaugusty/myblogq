@@ -4,12 +4,6 @@
 		.content
 			%h1= @pinpost.title
 			%p= @pinpost.content
-			- if @pinpost.user
-				%p 
-					Posted by 
-					%span= @pinpost.user.email
-
-			= link_to "Back", root_path
-			= link_to "Edit", edit_pin_post_path
-			= link_to "Delete", pin_post_path, method: "DELETE", data: {confirm: "Are you sure?"}
-			= link_to "Sign out", destroy_user_session_path, method: "DELETE", data: {confirm: "Are you sure?"}
+			- if @pinpost.user == current_user
+				= link_to "Edit", edit_pin_post_path, class: "btn btn-primary btn-xs col-md-offset-11"
+				= link_to "Delete", pin_post_path, method: "DELETE", data: {confirm: "Are you sure?"}, class: "btn btn-primary btn-xs col-md-offset-11"

@@ -6,11 +6,15 @@ class PinPostsController < ApplicationController
   end
 
   def new 
-  	@pinpost = PinPost.new
+    if signed_in?
+  	  @pinpost = current_user.pin_post.build
+    else
+      redirect_to new_user_session_path
+    end
   end
 
   def create
-  	@pinpost = PinPost.new(pin_post_params)
+  	@pinpost = current_user.pin_post.build(pin_post_params)
   	if @pinpost.save
   		redirect_to @pinpost
   	else

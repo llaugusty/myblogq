@@ -16,3 +16,19 @@
 //= require_tree .
 //= require bootstrap-sprockets
 //= require masonry/jquery.masonry
+//= require moment
+//= require fullcalendar
+
+$(document).ready(function() {
+
+    $('#calendar').fullCalendar({
+	    events: [
+	    	{title: 'event', start: '2015-07-10'}
+	    ],
+	    eventClick: function(calEvent, jsEvent, view) {
+	    	var s = prompt('Enter event', $(this).text());
+			if (s != null)
+				$(this).text(s);
+		}
+	});
+});
