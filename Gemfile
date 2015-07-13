@@ -16,7 +16,7 @@ gem 'masonry-rails', '~> 0.2.4'
 gem 'momentjs-rails'
 gem 'fullcalendar-rails'
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+gem 'jquery-ui-rails', '~> 5.0.5'
 
 group :development, :test do
   gem 'byebug'

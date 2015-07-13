@@ -1,0 +1,47 @@
+$(document).ready(function() { 	
+
+var repeatAction = function() {
+$('.fc-today').addClass('fc-future').removeClass('fc-today');
+$('.fc-day-number.fc-state-highlight').css('background-color', '#f1c40f');
+$('.fc-day').mouseenter(function(){
+$(this).css('background-color', 'lightblue');
+}).mouseleave(function(){
+$(this).css('background-color', 'white');
+});
+}
+
+$('#calendar').fullCalendar({ 
+events:[
+- if user_signed_in? 
+	- current_user.event.each do |event| 
+		= '{title:' + "'" + event.title + "'," 
+		= 'start:' + "'" + event.time + "'}" 
+		= "," if current_user.event.last != event
+],
+dayClick: function(date, jsEvent, view) {
+$('#dialog').attr('action', '/event?datadate=' + $(this).attr('data-date'));
+$('#dialog').dialog("open");
+}
+});
+
+$('button.fc-prev-button, button.fc-next-button, button.fc-today-button').click(function(){
+repeatAction();
+});
+
+repeatAction();
+
+$('#dialog').dialog({
+autoOpen: false,
+height: 100,
+modal: true,
+dialogClass: 'noTitleStuff',
+draggable: false,
+open: function(){
+$('.ui-widget-overlay').bind('click',function(){
+$('#dialog').dialog('close');
+})
+}
+});
+
+
+});

@@ -1,0 +1,31 @@
+$(document).ready(function() { 	
+$('#calendar').fullCalendar({ 
+events:[
+- if user_signed_in? 
+	- current_user.event.each do |event| 
+		= '{title:' + "'" + event.title + "'," 
+		= 'start:' + "'" + event.time + "'}" 
+		= "," if current_user.event.last != event
+],
+dayRender: function(date, element, view){
+element.bind('dblclick', function() {
+$('#dialog').attr('action', '/event?datadate=' + $(this).attr('data-date'));
+$(this).css('background-color, 'red');
+$('#dialog').dialog("open");
+});
+}
+});
+
+$('#dialog').dialog({
+autoOpen: false,
+modal: true,
+open: function(){
+$('.ui-widget-overlay').bind('click',function(){
+$('#dialog').dialog('close');
+
+
+})
+}
+});
+
+});
