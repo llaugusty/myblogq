@@ -59,9 +59,7 @@
 			duration: 500
 		},
 		open: function(){
-			$('.ui-widget-overlay').bind('click',function(){
-				$('#dialog').dialog('close');
-			})
+			$('#dialog').css('overflow', 'hidden');
 		}
 	});
 
