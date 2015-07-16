@@ -124,9 +124,16 @@ a.fc-day-grid-event.fc-h-event.fc-event.fc-start.fc-end {
 	color: white;
 	border-radius: 3px;
 	display: inline;
+	height: auto;
+}
+
+#dialog button {
+	margin-left: 30px;
 }
 div.ui-dialog.ui-widget {
 	width: auto;
+	border-radius: 0px;
+	height: auto;
 }
 
 .hidden {
