@@ -60,6 +60,9 @@
 		},
 		open: function(){
 			$('#dialog').css('overflow', 'hidden');
+			$('.ui-widget-overlay').bind('click',function(){
+				$('#dialog').dialog('close');
+			})
 		}
 	});
 
