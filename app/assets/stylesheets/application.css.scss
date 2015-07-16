@@ -21,6 +21,7 @@
 @import "bootstrap";
 
 ol.breadcrumb {
+	margin: 0;
 	overflow: hidden;
 	background: white;
 	-webkit-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
@@ -75,13 +76,13 @@ body {
 
 #calendar {
 	float: right;
-	margin-right: 20px;
+	margin: 0px;
 	width: 42%;
 	padding: 20px;
 	background: white;
-	-webkit-box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.39);
-	-moz-box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.39);
-	box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.39);
+	-webkit-box-shadow: -3px 3px 3px -1px rgba(0,0,0,0.17);
+	-moz-box-shadow: -3px 3px 3px -1px rgba(0,0,0,0.17);
+	box-shadow: -3px 3px 3px -1px rgba(0,0,0,0.17);
 }
 
 .container {
@@ -117,6 +118,17 @@ a.fc-day-grid-event.fc-h-event.fc-event.fc-start.fc-end {
 	height: 100000px;
 }
 
-.btn-dialog {
-	margin-left: 100px;
+
+#dialog input, #dialog button {
+	background: gray;
+	color: white;
+	border-radius: 3px;
+	display: inline;
+}
+div.ui-dialog.ui-widget {
+	width: auto;
+}
+
+.hidden {
+	display: none;
 }

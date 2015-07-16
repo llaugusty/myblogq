@@ -1,0 +1,5 @@
+- if user_signed_in? 
+	- current_user.event.each do |event| 
+		= '{title:' + "'" + event.title + "'," 
+		= 'start:' + "'" + event.time + "'}" 
+		= "," if current_user.event.last != event

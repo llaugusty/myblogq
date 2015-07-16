@@ -1,0 +1,70 @@
+<script>
+	$(document).ready(function() { 
+
+
+
+	// fullCalendar.io/docs
+	$('#calendar').fullCalendar({ 
+		events: {
+	        url: '/event.json',
+	        type: 'POST',
+	        data: function(){
+	        	$('.fc-today').addClass('fc-future').removeClass('fc-today');
+				$('.fc-day-number.fc-state-highlight').css('background-color', '#f1c40f');
+				$('.fc-day').mouseenter(function(){
+					$(this).css('background-color', 'lightblue');
+					}).mouseleave(function(){
+					$(this).css('background-color', 'white');
+				});
+	        },
+	        error: function() {
+	            alert('there was an error while fetching events!');
+	        }
+    	}, 
+    	dayClick: function(date, jsEvent, view) {
+    		$('#dialog').attr('action', '/event/edit?datadate=' + date.format());
+			$.getJSON( "/event/" + date.format() + ".json", function( data ) {
+				//document.getElementById("dialog").innerHTML = "";
+				$('#dialog input:nth-child(n + 3)').remove();
+				$('#dialog button').remove();
+				
+				$.each( data, function( key, val ) {
+					s = "<input" + " type='text' name='"  + val.id + "'" + "value='" + val.title + "'" + "/>";
+					$('#dialog').append(s);
+				});
+
+				$('#dialog').append("<input" + " class='btn-dialog' type='submit' value='Update'" + "/>");
+				$('#dialog').append("<button class='btn-dialog' type='button' >" + "New Event" + "</button>");
+
+				var count = 0;
+
+				$('button.btn-dialog').click(function(){
+					$('#dialog input.btn-dialog').before("<input" + " type='text' name='"  + "new" + count++ + "'" + "/>");
+				});
+
+				$('#dialog').dialog("open");
+			});
+		}
+	});
+
+	//jQuery UI
+	$('#dialog').dialog({
+		autoOpen: false,
+		modal: true,
+		dialogClass: 'noTitleStuff',
+		draggable: false,
+		width: 240,
+		show: {
+			effect: "fade",
+			duration: 500
+		},
+		open: function(){
+			$('.ui-widget-overlay').bind('click',function(){
+				$('#dialog').dialog('close');
+			})
+		}
+	});
+
+
+	});
+</script>
