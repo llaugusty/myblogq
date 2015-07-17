@@ -9,28 +9,56 @@
 		- if user_signed_in?
 			%ol.breadcrumb
 				%li.active= ""
-				%li= link_to 'Profile', edit_user_registration_path, :class => 'navbar-link'
-				%li= link_to 'Log out', destroy_user_session_path, method: :delete, :class => 'navbar-link'
-				%li= link_to "New Pin", new_pin_post_path, :class => 'navbar-link'
-				= link_to "", root_path, :class => 'navbar-link glyphicon glyphicon-home', :id => 'nav-brand'
-				= link_to "", "#", :class => "glyphicon glyphicon-calendar", :id => 'toggle-calendar'
+				%li
+					= link_to (content_tag(:span, "", :class => "glyphicon glyphicon-link") + " Profile"), edit_user_registration_path, :id => "navbar-link"
+				
+				%li
+					= link_to (content_tag(:span, "", :class => "glyphicon glyphicon-log-out") + " Sign out"), destroy_user_session_path, :id => "navbar-link", method: "delete"
 
-				%li.active= current_user.email
+				%li
+					%a.navbar-link{ "href" => "/pin_posts/new"}
+						%span.glyphicon.glyphicon-list-alt
+						New Pin
+				%a{ "href" => "#", "id" => "toggle-calendar"} 	
+					%span.glyphicon.glyphicon-calendar
+					Calendar
+
+				%li.active
+					%span.glyphicon.glyphicon-user
+					= current_user.email
+
+				%a{ "href" => "/", "id" => "nav-brand"} 	
+					%span.glyphicon.glyphicon-home
+					Home
+
 				- if notice
 					%p.alert.alert-success{ "style" => " display:inline;"}= notice
 				- if alert
 					%p.alert.alert-danger{ "style" => " display:inline;"}= alert
+
+				
+				
 		- else
 			%ol.breadcrumb
 				%li.active= ""
-				%li= link_to 'Sign up', new_user_registration_path, :class => 'navbar-link'
-				%li= link_to 'Login', new_user_session_path, :path => 'navbar-link'
-
+				%li
+					%a.navbar-link{ "href" => "/users/sign_up"}
+						%span.glyphicon.glyphicon-plus
+						Sign up
+				%li
+					%a.navbar-link{ "href" => "/users/sign_in"}
+						%span.glyphicon.glyphicon-sunglasses
+						Sign in
+				%a{ "href" => "#", "id" => "toggle-calendar"} 	
+					%span.glyphicon.glyphicon-calendar
+					Calendar
+				%a{ "href" => "/", "id" => "nav-brand"} 	
+					%span.glyphicon.glyphicon-home
+					Home
 
 		#calendar
 
 		.container.container-left
-
 			= yield
 
 		= render 'fullcalendar'
