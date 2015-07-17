@@ -2,7 +2,9 @@ class PinPostsController < ApplicationController
 	before_action :find_pin_post, only: [:show, :edit, :update, :destroy]
 
   def index
-  	@pinposts = PinPost.all
+    if current_user != nil
+      @pinposts = current_user.pin_post
+    end
   end
 
   def new 
