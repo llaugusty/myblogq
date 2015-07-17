@@ -92,9 +92,15 @@ ol.breadcrumb {
 }
 
 .container {
-	margin-left: 20px;
-	width: 60%;
+	width: 100%;
 	line-height: 1.8em;
+	display: block;
+	margin-left: 20px;
+}
+
+.container-left {
+	width: 60%;
+	margin-left: 20px;
 }
 
 a.fc-day-grid-event.fc-h-event.fc-event.fc-start.fc-end {
@@ -144,4 +150,9 @@ div.ui-dialog.ui-widget {
 
 .hidden {
 	display: none;
+}
+
+#toggle-calendar {
+	float: right;
+	margin-left: 20px;
 }
