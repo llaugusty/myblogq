@@ -83,14 +83,15 @@ ol.breadcrumb {
 }
 
 #calendar {
-	float: right;
-	margin: 0px;
+	right: 0px;
 	width: 42%;
-	padding: 20px;
+	padding: 10px;
 	background: white;
 	-webkit-box-shadow: -3px 3px 3px -1px rgba(0,0,0,0.17);
 	-moz-box-shadow: -3px 3px 3px -1px rgba(0,0,0,0.17);
 	box-shadow: -3px 3px 3px -1px rgba(0,0,0,0.17);
+	position: absolute;
+	z-index: 1;
 }
 
 .container {
