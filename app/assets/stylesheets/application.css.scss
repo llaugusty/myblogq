@@ -22,19 +22,21 @@
 
 
 body {
-	background: #E9E9E9;
+	background: white;
+	background-image: url('background.png');
 }
 
 ol.breadcrumb {
 	margin: 0;
 	overflow: hidden;
 	background: white;
-	-webkit-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
-	-moz-box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
-	box-shadow: 0px 0px 8px -2px rgba(0,0,0,0.75);
+	-webkit-box-shadow: 0px 5px 3px 0px rgba(0,0,0,0.38);
+	-moz-box-shadow: 0px 5px 3px 0px rgba(0,0,0,0.38);
+	box-shadow: 0px 5px 3px 0px rgba(0,0,0,0.38);
 	li {
 		float: right;
 	}
+
 }
 
 #nav-brand {
@@ -48,9 +50,9 @@ ol.breadcrumb {
 	background: #fafbfc;
 	text-align: center;
 	padding-bottom: 10px;
-	-webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.17);
-	-moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.17);
-	box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.17);
+	-webkit-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3);
+	-moz-box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3);
+	box-shadow: 0px 0px 3px 1px rgba(0,0,0,0.3);
 	img {
 	  	width: 100%;
 	  	height: auto;
@@ -67,9 +69,9 @@ ol.breadcrumb {
 
 .pin-show {
 	background: white;
-	-webkit-box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.39);
-	-moz-box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.39);
-	box-shadow: 0px 0px 6px -2px rgba(0,0,0,0.39);
+	-webkit-box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.39);
+	-moz-box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.39);
+	box-shadow: 1px 2px 4px 2px rgba(0,0,0,0.39);
 	margin-top: 20px;
 	width: 768px;
 	margin: 20px auto;
