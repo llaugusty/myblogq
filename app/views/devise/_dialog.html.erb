@@ -1,5 +1,2 @@
-<%= form_tag("/event?date=", method: "post", id: 'dialog') do %>
-  <%= label_tag(:title, "Title:") %>
-  <%= text_field_tag(:title) %>
-  <%= submit_tag("Add", class: 'btn-dialog') %>
+<%= form_tag("/event/edit", method: "post", id: 'dialog') do %>
 <% end %>

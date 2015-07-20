@@ -1,34 +1,60 @@
-<script>
-	$(document).ready(function() { 	
 
-	var repeatAction = function() {
-		$('.fc-today').addClass('fc-future').removeClass('fc-today');
-		$('.fc-day-number.fc-state-highlight').css('background-color', '#f1c40f');
-		$('.fc-day').mouseenter(function(){
-			$(this).css('background-color', 'lightblue');
-			}).mouseleave(function(){
-			$(this).css('background-color', 'white');
-		});
-	}
+<script src="//cdn.ckeditor.com/4.5.1/full/ckeditor.js"></script>
+
+<script>
+	$(document).ready(function() { 
+
+  	$('#pins').imagesLoaded(function(){
+  		$('#pins').masonry({
+  			itemSelector: '.box',
+      		isFitWidth: true
+      	});
+  	});
 
 
 	// fullCalendar.io/docs
 	$('#calendar').fullCalendar({ 
-		events:[
-		<%= render 'event' %>
-		],
-		dayClick: function(date, jsEvent, view) {
-			$('#dialog').attr('action', '/event?datadate=' + $(this).attr('data-date'));
-			$('#dialog').dialog("open");
+		events: {
+	        url: '/event.json',
+	        type: 'POST',
+	        data: function(){
+	        	$('.fc-today').addClass('fc-future').removeClass('fc-today');
+				$('.fc-day-number.fc-state-highlight').css('background-color', '#f1c40f');
+				$('.fc-day').mouseenter(function(){
+					$(this).css('background-color', 'lightblue');
+					}).mouseleave(function(){
+					$(this).css('background-color', 'white');
+				});
+	        },
+	        error: function() {
+	            alert('there was an error while fetching events!');
+	        }
+    	}, 
+    	dayClick: function(date, jsEvent, view) {
+    		$('#dialog').attr('action', '/event/edit?datadate=' + date.format());
+			$.getJSON( "/event/" + date.format() + ".json", function( data ) {
+				//document.getElementById("dialog").innerHTML = "";
+				$('#dialog input:nth-child(n + 3)').remove();
+				$('#dialog button').remove();
+				
+				$.each( data, function( key, val ) {
+					s = "<input" + " type='text' name='"  + val.id + "'" + "value='" + val.title + "'" + "/>";
+					$('#dialog').append(s);
+				});
+
+				$('#dialog').append("<input" + " class='btn-dialog' type='submit' value='Update'" + "/>");
+				$('#dialog').append("<button class='btn-dialog' type='button' >" + "New Event" + "</button>");
+
+				var count = 0;
+
+				$('button.btn-dialog').click(function(){
+					$('#dialog input.btn-dialog').before("<input" + " type='text' name='"  + "new" + count++ + "'" + "/>");
+				});
+
+				$('#dialog').dialog("open");
+			});
 		}
 	});
-
-	$('button.fc-prev-button, button.fc-next-button, button.fc-today-button').click(function(){
-		repeatAction();
-	});
-
-	repeatAction();
-
 
 	//jQuery UI
 	$('#dialog').dialog({
@@ -36,7 +62,13 @@
 		modal: true,
 		dialogClass: 'noTitleStuff',
 		draggable: false,
+		width: 240,
+		show: {
+			effect: "fade",
+			duration: 500
+		},
 		open: function(){
+			$('#dialog').css('overflow', 'hidden');
 			$('.ui-widget-overlay').bind('click',function(){
 				$('#dialog').dialog('close');
 			})
@@ -45,4 +77,20 @@
 
 
 	});
+
+	<% if !user_signed_in? %>
+		<%= render 'hide' %>
+	<% end %>
+
+	$('#toggle-calendar').click(function(){
+		$('#calendar').slideToggle(function(){
+			$('.container').toggleClass('container-left');
+			$('#pins').masonry({
+				itemSelector: '.box',
+      			isFitWidth: true
+			});
+		});
+	});
+
+	CKEDITOR.replace( 'pin_post_content' );
 </script>

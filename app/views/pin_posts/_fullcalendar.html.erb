@@ -78,6 +78,10 @@
 
 	});
 
+	<% if !user_signed_in? %>
+		<%= render 'hide' %>
+	<% end %>
+
 	$('#toggle-calendar').click(function(){
 		$('#calendar').slideToggle(function(){
 			$('.container').toggleClass('container-left');

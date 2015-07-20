@@ -1,3 +1,10 @@
+- if user_signed_in?
+	#calendar
+- else 
+	#jumbotron
+		%h1 We make everything simple
+		= link_to "Get started", new_user_registration_path
+
 #pins.transitions-enabled
 	- if @pinposts != nil
 		- @pinposts.each do |pinpost| 
