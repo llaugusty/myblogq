@@ -1,6 +1,4 @@
-- if user_signed_in?
-	#calendar
-- else 
+- if !user_signed_in?
 	#jumbotron
 		%h1 We make everything simple
 		= link_to "Get started", new_user_registration_path

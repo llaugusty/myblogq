@@ -49,10 +49,12 @@
 					%span.glyphicon.glyphicon-home
 					Home
 
-		
+		- if user_signed_in? 
+			#calendar
 
 		.container.container-left
 			= yield
+
 
 		= render 'fullcalendar'
 		= render 'dialog'
