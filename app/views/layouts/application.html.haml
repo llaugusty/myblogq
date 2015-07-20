@@ -10,7 +10,7 @@
 			%ol.breadcrumb
 				%li.active= ""
 				%li
-					= link_to (content_tag(:span, "", :class => "glyphicon glyphicon-link") + " Profile"), edit_user_registration_path, :id => "navbar-link"
+					= link_to (content_tag(:span, "", :class => "glyphicon glyphicon-user") + " " + current_user.email), edit_user_registration_path, :id => "navbar-link"
 				
 				%li
 					= link_to (content_tag(:span, "", :class => "glyphicon glyphicon-log-out") + " Sign out"), destroy_user_session_path, :id => "navbar-link", method: "delete"
@@ -22,10 +22,6 @@
 				%a{ "href" => "#", "id" => "toggle-calendar"} 	
 					%span.glyphicon.glyphicon-calendar
 					Calendar
-
-				%li.active
-					%span.glyphicon.glyphicon-user
-					= current_user.email
 
 				%a{ "href" => "/", "id" => "nav-brand"} 	
 					%span.glyphicon.glyphicon-home
