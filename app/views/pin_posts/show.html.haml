@@ -1,9 +1,8 @@
-.col-md-9.col-md-offset-1
-	.pin-show
-		= image_tag @pinpost.image.url(:large)
-		.content
-			%h1= @pinpost.title
-			= @pinpost.content.html_safe
-			- if @pinpost.user == current_user
-				= link_to "Edit", edit_pin_post_path, class: "btn btn-primary btn-xs col-md-offset-11"
-				= link_to "Delete", pin_post_path, method: "DELETE", data: {confirm: "Are you sure?"}, class: "btn btn-primary btn-xs col-md-offset-11"
+.pin-show
+	= image_tag @pinpost.image.url(:large)
+	.content
+		%h1= @pinpost.title
+		= @pinpost.content.html_safe
+		- if @pinpost.user == current_user
+			= link_to "Edit", edit_pin_post_path, class: "btn btn-primary btn-xs col-md-offset-11"
+			= link_to "Delete", pin_post_path, method: "DELETE", data: {confirm: "Are you sure?"}, class: "btn btn-primary btn-xs col-md-offset-11"

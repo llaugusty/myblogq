@@ -2,6 +2,12 @@
 <script src="//cdn.ckeditor.com/4.5.1/full/ckeditor.js"></script>
 
 <script>
+
+	var w = $('.container').width();
+
+	$('.pin-post').width(w / 2.6);
+	$('.pin-show').width($('.container').width());
+
 	$(document).ready(function() { 
 
   	$('#pins').imagesLoaded(function(){
