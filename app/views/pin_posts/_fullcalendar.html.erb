@@ -20,11 +20,6 @@
 	        data: function(){
 	        	$('.fc-today').addClass('fc-future').removeClass('fc-today');
 				$('.fc-day-number.fc-state-highlight').css('background-color', '#f1c40f');
-				$('.fc-day').mouseenter(function(){
-					$(this).css('background-color', 'lightblue');
-					}).mouseleave(function(){
-					$(this).css('background-color', 'white');
-				});
 	        },
 	        error: function() {
 	            alert('there was an error while fetching events!');
