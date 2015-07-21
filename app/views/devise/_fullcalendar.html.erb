@@ -2,6 +2,12 @@
 <script src="//cdn.ckeditor.com/4.5.1/full/ckeditor.js"></script>
 
 <script>
+
+	var w = $('.container').width();
+
+	$('.pin-post').width(w / 2.6);
+	$('.pin-show').width($('.container').width());
+
 	$(document).ready(function() { 
 
   	$('#pins').imagesLoaded(function(){
@@ -20,11 +26,6 @@
 	        data: function(){
 	        	$('.fc-today').addClass('fc-future').removeClass('fc-today');
 				$('.fc-day-number.fc-state-highlight').css('background-color', '#f1c40f');
-				$('.fc-day').mouseenter(function(){
-					$(this).css('background-color', 'lightblue');
-					}).mouseleave(function(){
-					$(this).css('background-color', 'white');
-				});
 	        },
 	        error: function() {
 	            alert('there was an error while fetching events!');
