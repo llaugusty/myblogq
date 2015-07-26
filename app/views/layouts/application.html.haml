@@ -9,6 +9,7 @@
 		- if user_signed_in?
 			%ol.breadcrumb
 				%li.active= ""
+
 				%li
 					= link_to (content_tag(:span, "", :class => "glyphicon glyphicon-user") + " " + current_user.email), edit_user_registration_path, :id => "navbar-link"
 				
@@ -19,9 +20,14 @@
 					%a.navbar-link{ "href" => "/pin_posts/new"}
 						%span.glyphicon.glyphicon-list-alt
 						New Pin
-				%a{ "href" => "#", "id" => "toggle-calendar"} 	
-					%span.glyphicon.glyphicon-calendar
-					Calendar
+				%li
+					%a{ "href" => "#", "id" => "toggle-calendar"} 	
+						%span.glyphicon.glyphicon-calendar
+						Calendar
+
+				%a{ "href" => "#", "id" => "toggle-musicbox"} 	
+					%span.glyphicon.glyphicon-music
+					Music box
 
 				%a{ "href" => "/", "id" => "nav-brand"} 	
 					%span.glyphicon.glyphicon-home
@@ -51,11 +57,10 @@
 
 		- if user_signed_in? 
 			#calendar
+			= render 'musicbox'
 
 		.container.container-left
 			= yield
 
-
 		= render 'fullcalendar'
 		= render 'dialog'
-		

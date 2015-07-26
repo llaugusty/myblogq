@@ -114,12 +114,15 @@ ol.breadcrumb {
 #jumbotron {
 	width: 50%;
 	height: 400px;
-	margin: 200px auto;
+	position: absolute;
+	top: 25%;
+	left: 25%;
 	background: black;
-	background: rgb(60, 60, 60);
-    background: rgba(60, 60, 60, 0.7);
+	background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.4);
     text-align: center;
     padding-top: 100px;
+
 	h1 {
 		color: white;
 		margin-bottom: 50px;
@@ -147,6 +150,26 @@ ol.breadcrumb {
 	box-shadow: -3px 3px 3px -1px rgba(0,0,0,0.17);
 	position: absolute;
 	z-index: 1;
+}
+
+#musicbox {
+	right: 0px;
+	width: 42%;
+	padding: 10px;
+	background-image: url('nav.png');
+	-webkit-box-shadow: -3px 3px 3px -1px rgba(0,0,0,0.17);
+	-moz-box-shadow: -3px 3px 3px -1px rgba(0,0,0,0.17);
+	box-shadow: -3px 3px 3px -1px rgba(0,0,0,0.17);
+	position: absolute;
+	z-index: 1;
+	ul {
+		li {
+			a {
+				color: black;
+				background-image: url('nav.png');
+			}
+		}
+	}
 }
 
 .container {
@@ -210,7 +233,7 @@ div.ui-dialog.ui-widget {
 	display: none;
 }
 
-#toggle-calendar {
+#toggle-calendar, #toggle-musicbox {
 	float: right;
-	margin-left: 20px;
 }
+
