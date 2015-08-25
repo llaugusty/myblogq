@@ -20,3 +20,19 @@
 //= require fullcalendar
 //= require jquery-ui
 //= require angular
+//= require angular-route
+
+	var app = angular.module('myApp', []);
+
+	
+	app.controller('mainController', ['$scope', function($scope){
+	    $scope.current = 1;
+	    
+	    $scope.isSet = function(val){
+	        return $scope.current === val;
+	    }
+	    
+	    $scope.set = function(val){
+	        $scope.current = val;
+	    }
+	}]);

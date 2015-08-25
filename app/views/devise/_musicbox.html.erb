@@ -1,0 +1,17 @@
+<div id="musicbox" ng-controller="mainController">
+	<ul class="nav nav-tabs nav-justified">
+		<li  ng-class="{active:isSet(1)}">
+			<a href="#/now" ng-click="set(1)">Now playing</a>
+		</li>
+		<li ng-class="{active:isSet(2)}">
+			<a href="#/search" ng-click="set(2)">Search</a>
+		</li>
+		<li  ng-class="{active:isSet(3)}">
+			<a href="#/playlist" ng-click="set(3)">Playlist</a>
+		</li>
+	</ul>
+
+	{{ current }}
+	
+	<div ng-view></div>
+</div>

@@ -5,7 +5,7 @@
 		= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
 		= javascript_include_tag 'application', 'data-turbolinks-track' => true
 		= csrf_meta_tags
-	%body
+	%body{"ng-app" => "myApp"}
 		- if user_signed_in?
 			%ol.breadcrumb
 				%li.active= ""
@@ -21,13 +21,10 @@
 						%span.glyphicon.glyphicon-list-alt
 						New Pin
 				%li
-					%a{ "href" => "#", "id" => "toggle-calendar"} 	
+					%a{ "href" => "javascript:;", "id" => "toggle-calendar"} 	
 						%span.glyphicon.glyphicon-calendar
 						Calendar
 
-				%a{ "href" => "#", "id" => "toggle-musicbox"} 	
-					%span.glyphicon.glyphicon-music
-					Music box
 
 				%a{ "href" => "/", "id" => "nav-brand"} 	
 					%span.glyphicon.glyphicon-home
@@ -57,7 +54,6 @@
 
 		- if user_signed_in? 
 			#calendar
-			= render 'musicbox'
 
 		.container.container-left
 			= yield
