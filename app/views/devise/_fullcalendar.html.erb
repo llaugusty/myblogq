@@ -1,4 +1,5 @@
 
+
 <script src="//cdn.ckeditor.com/4.5.1/full/ckeditor.js"></script>
 
 <script>
@@ -57,7 +58,6 @@
 	});
 
 	$('#calendar').slideToggle();
-	$('#musicbox').slideToggle();
 	$('.container').toggleClass('container-left');
 
 	//jQuery UI
@@ -86,7 +86,7 @@
 
 	$('#toggle-calendar').click(function(){
 		$('#calendar').slideToggle(function(){
-			if ($('#musicbox').css('display') === 'none') {
+			
 				$('.container').toggleClass('container-left');
 				$('.pin-show').toggleClass('col-md-offset-3');
 				$('.pin-show').toggleClass('col-md-6');
@@ -95,22 +95,7 @@
 					itemSelector: '.box',
 	      			isFitWidth: true
 				});
-			}
-		});
-	});
-
-	$('#toggle-musicbox').click(function(){
-		$('#musicbox').slideToggle(function(){
-			if ($('#calendar').css('display') === 'none') {
-				$('.container').toggleClass('container-left');
-				$('.pin-show').toggleClass('col-md-offset-3');
-				$('.pin-show').toggleClass('col-md-6');
-				$('.pin-show').toggleClass('col-md-12');
-				$('#pins').masonry({
-					itemSelector: '.box',
-	      			isFitWidth: true
-				});
-			}
+			
 		});
 	});
 
